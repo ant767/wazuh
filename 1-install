@@ -1,0 +1,32 @@
+
+Развернуть из OVA образа или иным согласно документации.
+
+Перейти в Management -> Configuration -> Edit Configuration
+
+Добавить
+
+  <remote>
+    <connection>syslog</connection>
+    <port>5514</port>
+    <protocol>udp</protocol>
+    <allowed-ips>0.0.0.0/0</allowed-ips>
+  </remote>
+
+Описание конфигурации
+https://documentation.wazuh.com/current/user-manual/reference/ossec-conf/remote.html
+
+
+Изменить на “yes”:
+alerts_log
+logall
+logall_json
+
+
+# После изменения параметров -> Save -> Restart Manager
+
+# Подключиться на Wazuh SIEM по ssh для активации правил, которые по-умолчанию игнорируются и не срабатывают.
+
+
+sudo sed -i 's/level="0"/level="3"/g' /var/ossec/ruleset/rules/*
+sudo sed -i 's/level="1"/level="3"/g' /var/ossec/ruleset/rules/*
+sudo sed -i 's/level="2"/level="3"/g' /var/ossec/ruleset/rules/*
