@@ -1,0 +1,15 @@
+
+
+    <rule id="170329" level="0" >
+        <if_sid>221</if_sid>
+        <field name="operation_type">DELETE</field>
+        <description> игнорировать </description>
+    </rule>
+
+    <rule id="170329" level="0" >
+        <if_group>sysmon</if_group>
+        <field name="win.eventdata.image">C:\\\\WINDOWS\\\\system32\\\\svchost.exe</field>
+        <field name="win.eventdata.user">NT AUTHORITY\\\\СИСТЕМА</field>
+	<field name="win.eventdata.utcTime">\d\d\d\d-\d\d-\d\d 08:\d\d:\d\d.\d\d\d</field>
+        <description> игнорировать </description>
+    </rule>
